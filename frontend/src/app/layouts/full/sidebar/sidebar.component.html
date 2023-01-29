@@ -1,0 +1,9 @@
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" group="{{menuitem.state}}">
+        <a appAccordionToggle  style="background-color:#2CCBC6;" [routerLink]="['/clinicx',menuitem.state]" *ngIf="(menuitem.role === '' || menuitem.role === tokenPayload.role)">
+            <mat-icon>{{menuitem.icon}}</mat-icon>
+            <span style="color:aliceblue;">{{menuitem.name}}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+</mat-nav-list>

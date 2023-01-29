@@ -1,0 +1,60 @@
+<form class="date-range-container">
+    <mat-form-field>
+      <mat-label>Start Date</mat-label>
+      <input matInput name="startDate" [(ngModel)]="startDate" [matDatepicker]="startPicker" (focus)="startPicker.open()" type="text">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input matInput  name="endDate" [(ngModel)]="endDate" [matDatepicker]="endPicker" (focus)="endPicker.open()" type="text">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  
+    <button mat-raised-button (click)="getRecords()">Get Records</button>
+  
+    <div class="records-container" *ngIf="records">
+      <mat-table [dataSource]="records">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let record"> {{record.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="contactNumber">
+            <mat-header-cell *matHeaderCellDef> Contact Number </mat-header-cell>
+            <mat-cell *matCellDef="let record"> {{record.contactNumber}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="doctorDetails">
+          <mat-header-cell *matHeaderCellDef> Branch </mat-header-cell>
+          <mat-cell *matCellDef="let record"> {{record.branch}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let record"> {{record.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="paymentMethod">
+            <mat-header-cell *matHeaderCellDef> Payment Method </mat-header-cell>
+            <mat-cell *matCellDef="let record"> {{record.paymentMethod}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+          <mat-header-cell *matHeaderCellDef> Created At </mat-header-cell>
+          <mat-cell *matCellDef="let record"> {{record.createdAt | date : 'fullDate'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createdBy">
+            <mat-header-cell *matHeaderCellDef> Created By </mat-header-cell>
+            <mat-cell *matCellDef="let record"> {{record.createdBy}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="appointment_date">
+          <mat-header-cell *matHeaderCellDef> Appointment Date </mat-header-cell>
+          <mat-cell *matCellDef="let record"> {{record.doctorDetails[0].appointment_date | date : 'fullDate'}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-error *ngIf="error">
+    {{ error }}
+  </mat-error>
+</form>

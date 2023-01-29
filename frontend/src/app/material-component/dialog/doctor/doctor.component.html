@@ -1,0 +1,83 @@
+<mat-toolbar>
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">{{dialogData.action}} Doctor</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="doctorForm">
+        <div fxFlex fxLayout="column">
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="doctorForm.controls.name.touched && doctorForm.controls.name.invalid">
+                        <span *ngIf="doctorForm.controls.name.errors.required">This field is mandatory.</span>
+                        <span *ngIf="doctorForm.controls.name.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" required>
+                    <mat-error *ngIf="doctorForm.controls.description.touched && doctorForm.controls.description.invalid">
+                        <span *ngIf="doctorForm.controls.description.errors.required">This field is mandatory.</span>
+                        <span *ngIf="doctorForm.controls.description.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName="contactNumber" required>
+                    <mat-error *ngIf="doctorForm.controls.contactNumber.touched && doctorForm.controls.contactNumber.invalid">
+                        <span *ngIf="doctorForm.controls.contactNumber.errors.required">This field is mandatory.</span>
+                        <span *ngIf="doctorForm.controls.contactNumber.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="doctorForm.controls.email.touched && doctorForm.controls.email.invalid">
+                        <span *ngIf="doctorForm.controls.email.errors.required">This field is mandatory.</span>
+                        <span *ngIf="doctorForm.controls.email.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" required>
+                    <mat-error *ngIf="doctorForm.controls.password.touched && doctorForm.controls.password.invalid">
+                        <span *ngIf="doctorForm.controls.password.errors.required">This field is mandatory.</span>
+                        <span *ngIf="doctorForm.controls.password.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Branch</mat-label>
+                    <mat-select formControlName="branchId">
+                        <mat-option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="categoryId" (selectionChange)="getProductsByCategory($event.value)">
+                        <mat-option *ngFor="let category of categorys" [value]="category.id">{{category.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Product</mat-label>
+                    <mat-select formControlName="productId">
+                        <mat-option *ngFor="let product of products" [value]="product.id">{{product.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button type="submit" (click)="handleSubmit()" [disabled]="!(doctorForm.valid && doctorForm.dirty)">{{action}}</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

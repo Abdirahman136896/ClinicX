@@ -1,0 +1,59 @@
+<mat-toolbar>
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">{{dialogData.action}} Branch</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="branchForm">
+        <div fxFlex fxLayout="column">
+            <div fxFlex fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="branchForm.controls.name.touched && branchForm.controls.name.invalid">
+                        <span *ngIf="branchForm.controls.name.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Location</mat-label>
+                    <input matInput formControlName="location" required>
+                    <mat-error *ngIf="branchForm.controls.location.touched && branchForm.controls.location.invalid">
+                        <span *ngIf="branchForm.controls.location.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName="contactNumber" required>
+                    <mat-error *ngIf="branchForm.controls.contactNumber.touched && branchForm.controls.contactNumber.invalid">
+                        <span *ngIf="branchForm.controls.contactNumber.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="branchForm.controls.email.touched && branchForm.controls.email.invalid">
+                        <span *ngIf="branchForm.controls.email.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" required>
+                    <mat-error *ngIf="branchForm.controls.password.touched && branchForm.controls.password.invalid">
+                        <span *ngIf="branchForm.controls.password.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Role</mat-label>
+                    <input matInput formControlName="role" required>
+                    <mat-error *ngIf="branchForm.controls.role.touched && branchForm.controls.role.invalid">
+                        <span *ngIf="branchForm.controls.role.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button type="submit" (click)="handleSubmit()" [disabled]="!(branchForm.valid && branchForm.dirty)">{{action}}</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

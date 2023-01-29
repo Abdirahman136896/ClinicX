@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <style>
+            table{
+                font-family: arial,sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            td,th{
+                border:1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3 style="text-align:center;">ClinicX</h3>
+        <br>
+        <h3>Doctor Details:</h3>
+        <table>
+            <tr>
+                <th>Name: <%= name %></th>
+                <th>Email: <%= email %></th>
+            </tr>
+            <tr>
+                <th>Contact Number: <%= contactNumber %></th>
+                <th>Payment Method: <%= paymentMethod %></th>
+            </tr>
+        </table>
+
+        <h3>Doctor Details:</h3>
+        <table>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Doctor Contact Number</th>
+                <th>Doctor Email</th>
+                <th>Doctor Branch</th>
+            </tr>
+            <% if(doctorDetails.length > 0){ %>
+                <% doctorDetails.forEach(doctor =>{ %>
+                    <tr>
+                        <td><%= doctor.doctor %></td>
+                        <td><%= doctor.doctor_contactNumber %></td>
+                        <td><%= doctor.doctor_email %></td>
+                        <td><%= doctor.branch %></td>
+                    </tr>
+                    <% }); %>
+                    <% } %>
+        </table>
+        <br>
+        <h3>Service Details:</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Number of Patients</th>
+                <th>Appointment Date</th>
+                <th>Price</th>
+                <th>Sub Total</th>
+            </tr>
+            <% if(productDetails.length > 0){ %>
+                <% productDetails.forEach(product =>{ %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.quantity %></td>
+                        <td><%= product.appointment_date %></td>
+                        <td><%= product.price %></td>
+                        <td><%= product.total %></td>
+                    </tr>
+                    <% }); %>
+                    <% } %>
+        </table>
+        <h3>Total: <%= totalAmount %></h3>
+        <h3>Thank you for visiting ClinicX. We Pray for your full recovery</h3>
+    </body>
+</html>
