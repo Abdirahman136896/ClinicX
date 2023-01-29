@@ -28,7 +28,7 @@ How to create the database and the database tables;
   EMAIL_FROM =  example@outlook.com
   EMAIL_SENDER = ClinicX
 
-  ACCESS_TOKEN = 927242765b6bb4b3abcdb7b31e0c411f6c9d1425785d93c321b690d8dfb4fdaebcbefca98c5dbecca1f3282ef4e514b341dd6ba3a088f92a7b35b877e3286328
+  ACCESS_TOKEN = ''
  4. Type "npm start" and wait for DB Connected message.
  
  How to run the frontend
