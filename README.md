@@ -4,6 +4,9 @@ Clinic Management System that has the following objectives:
 2. Provide patients with an easy way to locate ClinicX branches and book services.
 3. Generate reports to help ClinicX understand its performance and make informed decisions.
 
+Objectives of Clinic X project illustrated in the below video:
+          https://drive.google.com/file/d/1jBoA4WOPtM75l0WPkaXrsm2eLV8jmSEB/view?usp=share_link
+
 How to create the database and the database tables;
 1. Open the table.sql file and copy all the sql statements. Open mysql workbench or mysql on terminal.
 2. Create a database called clinic using the following sql statement:
